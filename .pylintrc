@@ -1,6 +1,11 @@
+[MASTER]
+
+ignore = setup.py
+
 [MESSAGES CONTROL]
 
 disable =
+    missing-module-docstring
 
 [REPORTS]
 output-format = colorized

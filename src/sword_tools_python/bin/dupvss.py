@@ -1,15 +1,15 @@
 """
 A command line utility that takes one Sword module name, iterates all the verses in it,
 and detects any duplicate verses in it, reporting them back to the caller along with
-the count and the references where these duplicates are found. Only compares the stripped
-bare text of the verses, not any markup or leading/trailing whitespaces.
+the count and the references where these duplicates are found. Only compares the
+stripped bare text of the verses, not any markup or leading/trailing whitespaces.
 """
 import argparse
 import sys
 
 from prettytable import PrettyTable
 
-from .. import utils # pylint: disable=relative-beyond-top-level
+from sword_tools_python import utils
 
 
 def dupvss():
