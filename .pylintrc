@@ -2,6 +2,8 @@
 
 ignore = setup.py
 
+ignore-patterns = test_.*\.py
+
 [MESSAGES CONTROL]
 
 disable =

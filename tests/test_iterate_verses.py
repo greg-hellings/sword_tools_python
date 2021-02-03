@@ -1,4 +1,5 @@
 import pytest
+
 from sword_tools_python import utils
 
 
