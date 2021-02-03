@@ -47,14 +47,14 @@ jobs:
           - "3.7"
           - "3.8"
           - "3.9"
+    container:
+      image: fedora:latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python }}
       - name: run test
         run: |
-          python -m pip install tox
+          sudo dnf install sword-devel python3-sword python3-tox
+          cd /github/workspace
           tox -e py$(printf "${{ matrix.python }}" | tr -d '.')
         env:
           COVERAGE_FILE: .coverage.${{ matrix.python }}
