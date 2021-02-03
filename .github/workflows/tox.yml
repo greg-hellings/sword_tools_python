@@ -54,7 +54,6 @@ jobs:
       - name: run test
         run: |
           sudo dnf install -y sword-devel python3-sword python3-tox
-          cd /github/workspace
           tox -e py$(printf "${{ matrix.python }}" | tr -d '.')
         env:
           COVERAGE_FILE: .coverage.${{ matrix.python }}
