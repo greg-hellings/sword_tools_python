@@ -88,7 +88,6 @@ jobs:
 
   publish:
     needs:
-      - coverage
       - packaging
     if: github.event_name == 'release'
     runs-on: ubuntu-20.04
