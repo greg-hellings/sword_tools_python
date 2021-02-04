@@ -4,6 +4,9 @@ Python style iterations of modules and the like
 """
 from typing import Generator
 
+# We disable the lint check on this, because this file is old and supports very
+# old versions of Python, and also it needs the underlying C wrapper to work
+# properly. And we don't want to have to run binary packages in lint
 import Sword  # pylint: disable=import-error
 
 mgr = Sword.SWMgr()
@@ -14,8 +17,8 @@ def get_mod(module: str) -> Sword.SWModule:
     Simply grabs a module without the need to do more things to configure it
     than this.
     """
-    module = mgr.getModule(module)
-    return module
+    mod = mgr.getModule(module)
+    return mod
 
 
 def strip_verses(module: Sword.SWModule) -> Generator[str, None, None]:
