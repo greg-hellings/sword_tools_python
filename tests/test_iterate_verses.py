@@ -1,5 +1,4 @@
 import pytest
-import Sword
 
 from sword_tools_python import utils
 
