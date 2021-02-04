@@ -52,7 +52,11 @@ jobs:
     steps:
       - name: install dnf tools
         run: |
-          sudo dnf install -y sword-devel python3-sword python3-tox git gcc-c++
+          sudo dnf install -y sword-utils sword-devel python3-sword python3-tox git gcc-c++
+          installmgr --allow-internet-access-and-risk-tracing-and-jail-or-martyrdom -init
+          installmgr --allow-internet-access-and-risk-tracing-and-jail-or-martyrdom -sc
+          installmgr --allow-internet-access-and-risk-tracing-and-jail-or-martyrdom -r CrossWire
+          installmgr --allow-internet-access-and-risk-tracing-and-jail-or-martyrdom -ri CrossWire KJV
       - uses: actions/checkout@v2
       - name: run test
         run: |
