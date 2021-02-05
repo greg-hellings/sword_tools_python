@@ -15,6 +15,9 @@ on:
   schedule:
     - cron: 1 0 * * *  # Run daily at 0:01 UTC
 
+env:
+  packages: sword-utils sword-devel python3-tox git gcc-c++ python3-devel
+
 jobs:
   lint:
     runs-on: ubuntu-20.04
@@ -47,12 +50,11 @@ jobs:
           - "3.7"
           - "3.8"
           - "3.9"
-    container:
-      image: fedora:latest
+    container: fedora:latest
     steps:
       - name: install dnf tools
         run: |
-          sudo dnf install -y sword-utils sword-devel python3-tox git gcc-c++ python3-devel
+          sudo dnf install -y ${{ env.packages }}
           installmgr --allow-internet-access-and-risk-tracing-and-jail-or-martyrdom -init
           installmgr --allow-internet-access-and-risk-tracing-and-jail-or-martyrdom -sc
           installmgr --allow-internet-access-and-risk-tracing-and-jail-or-martyrdom -r CrossWire
@@ -72,7 +74,10 @@ jobs:
   coverage:
     needs: test
     runs-on: ubuntu-20.04
+    container: fedora:latest
     steps:
+      - name: install dnf tools
+        run: sudo dnf install -y ${{ env.packages }}
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: actions/download-artifact@v2
