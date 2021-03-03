@@ -21,12 +21,9 @@ env:
 jobs:
   lint:
     runs-on: ubuntu-20.04
-    container: fedora:latest
     steps:
       - uses: actions/checkout@v2
-      - name: install dnf tools
-        run: |
-          sudo dnf install -y ${{ env.packages }}
+      - uses: actions/setup-python@v2
       - name: run lint
         run: |
           python -m pip install -U tox
